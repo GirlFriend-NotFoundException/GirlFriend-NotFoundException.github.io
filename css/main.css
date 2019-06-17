@@ -1943,7 +1943,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #900ed0;
+  background: #9fd600;
 }
 .feed-link,
 .chat {
@@ -2595,7 +2595,7 @@ ul.breadcrumb li+li:last-child {
   overflow: hidden;
   padding: 0;
   width: 240px;
-  background: #fff;
+  background: rgba(255,255,255,0.5);
   box-shadow: initial;
   border-radius: initial;
 }
@@ -2629,7 +2629,7 @@ ul.breadcrumb li+li:last-child {
   box-sizing: border-box;
   padding: 40px;
   width: calc(100% - 252px);
-  background: #fff;
+  background: rgba(255,255,255,0.5);
   min-height: 700px;
   box-shadow: initial;
   border-radius: initial;
