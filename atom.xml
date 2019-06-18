@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="www.girlfriendnotfoundexception.com/"/>
-  <updated>2019-06-18T16:00:47.295Z</updated>
+  <updated>2019-06-18T16:02:47.502Z</updated>
   <id>www.girlfriendnotfoundexception.com/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="www.girlfriendnotfoundexception.com/hello-world/"/>
     <id>www.girlfriendnotfoundexception.com/hello-world/</id>
     <published>2019-06-17T07:00:14.530Z</published>
-    <updated>2019-06-18T16:00:47.295Z</updated>
+    <updated>2019-06-18T16:02:47.502Z</updated>
     
-    <content type="html"><![CDATA[<p>#我是最强</p><a id="more"></a><p><img src="/images/xmbd.jpg" alt><br>hhhh</p>]]></content>
+    <content type="html"><![CDATA[<p>#我是最强<br><img src="/images/xmbd.jpg" alt></p><a id="more"></a><p>hhhh</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;#我是最强&lt;/p&gt;
+      &lt;p&gt;#我是最强&lt;br&gt;&lt;img src=&quot;/images/xmbd.jpg&quot; alt&gt;&lt;/p&gt;
     
     </summary>
     
