@@ -1943,7 +1943,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fffcc3;
+  background: #94ffff;
 }
 .feed-link,
 .chat {
@@ -2993,6 +2993,8 @@ ul.breadcrumb li+li:last-child {
 body {
   background: url("/images/background.jpg");
   background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: fixed;
 }
 .post {
   margin-top: 60px;
