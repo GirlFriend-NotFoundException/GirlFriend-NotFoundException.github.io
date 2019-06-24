@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
+    <title><![CDATA[Android]]></title>
     <url>%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[#我是最强 hhhh]]></content>
+    <content type="text"><![CDATA[#准备工作 ##安装Android studio以及创建一个hello world项目 安装这一块，可以说这个Android studio是超级麻烦的，在csdn上找了很多教程，各种各样的都有，试了几次。最后还是在b站上找了一个视频教学。博主叫做孙老师非要尬聊，这个博主的视频还是做得不错的，这个是安装的视频教程： https://www.bilibili.com/videoav35319198。安装出错的同学可以去看看，很详细的。]]></content>
   </entry>
 </search>

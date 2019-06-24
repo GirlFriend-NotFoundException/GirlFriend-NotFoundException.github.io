@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="www.girlfriendnotfoundexception.com/"/>
-  <updated>2019-06-18T16:02:47.502Z</updated>
+  <updated>2019-06-24T04:24:57.103Z</updated>
   <id>www.girlfriendnotfoundexception.com/</id>
   
   <author>
@@ -17,17 +17,17 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
+    <title>Android</title>
     <link href="www.girlfriendnotfoundexception.com/hello-world/"/>
     <id>www.girlfriendnotfoundexception.com/hello-world/</id>
     <published>2019-06-17T07:00:14.530Z</published>
-    <updated>2019-06-18T16:02:47.502Z</updated>
+    <updated>2019-06-24T04:24:57.103Z</updated>
     
-    <content type="html"><![CDATA[<p>#我是最强<br><img src="/images/xmbd.jpg" alt></p><a id="more"></a><p>hhhh</p>]]></content>
+    <content type="html"><![CDATA[<p>#准备工作<br><img src="/images/xmbd.jpg" alt></p><a id="more"></a><p>##安装Android studio以及创建一个hello world项目<br>  安装这一块，可以说这个Android studio是超级麻烦的，在csdn上找了很多教程，各种各样的都有，试了几次。最后还是在b站上找了一个视频教学。博主叫做孙老师非要尬聊，这个博主的视频还是做得不错的，这个是安装的视频教程：<br>  <a href="https://www.bilibili.com/videoav35319198。安装出错的同学可以去看看，很详细的。" target="_blank" rel="noopener">https://www.bilibili.com/videoav35319198。安装出错的同学可以去看看，很详细的。</a></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;#我是最强&lt;br&gt;&lt;img src=&quot;/images/xmbd.jpg&quot; alt&gt;&lt;/p&gt;
+      &lt;p&gt;#准备工作&lt;br&gt;&lt;img src=&quot;/images/xmbd.jpg&quot; alt&gt;&lt;/p&gt;
     
     </summary>
     
