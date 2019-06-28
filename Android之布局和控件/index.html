@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="曾是惊鸿照影来">
 <meta property="og:description" content="#布局和控件">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-24T06:35:45.098Z">
+<meta property="og:updated_time" content="2019-06-27T07:31:40.604Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android之布局和控件">
 <meta name="twitter:description" content="#布局和控件">
@@ -431,12 +431,24 @@
                 
               
 
-              <time title="创建时间：2019-06-24 14:32:33 / 修改时间：14:35:45" itemprop="dateCreated datePublished" datetime="2019-06-24T14:32:33+08:00">2019-06-24</time>
+              <time title="创建时间：2019-06-24 14:32:33" itemprop="dateCreated datePublished" datetime="2019-06-24T14:32:33+08:00">2019-06-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-27 15:31:40" itemprop="dateModified" datetime="2019-06-27T15:31:40+08:00">2019-06-27</time>
               
             
           </span>
@@ -475,7 +487,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.7k</span>
+                <span title="本文字数">5.4k</span>
               
 
               
@@ -519,10 +531,25 @@ Tablelayout类以行和列的形式对控件进行管理，每一行为一个Tab
 <p>#基本UI组件</p>
 <p>##文本类组件</p>
 <p>###文本框组件TextView<br>    颜色 textcolor 字体 textsize 设置单行 singleline<br>    字符串资源  在res的values下明德strings里面 这里可以提前设置好我们需要使用的，通过@string/字符串的名字调用即可<br>    <a href="https://www.cnblogs.com/plokmju/p/Android_UI_TextView.html" target="_blank" rel="noopener">https://www.cnblogs.com/plokmju/p/Android_UI_TextView.html</a><br>    在博客园看到一片文章讲的很好这里直接引用过来。</p>
-<p>###编辑框组件EditText<br>    hint：属性添加文本框提示内容<br>    inputType：设置密码,密码框里面有只能输入数字。<br>    drawable(+方位如：Left)属性是一张图片,在编辑框的指定位置添加图片<br>    注：drawableleft=drawablestart（最好使用这个）<br>    drawablepadding:用来设置图片和编辑框的距离<br>    lines:用来设置我们的编辑框的行数（输入文字）这个是显示的行数，超过这个行数可以拖动<br>    getText(）:获取我们输入的文本信息<br>        (在Mainactivity里面获取),提前指定一个id，在main里面new 一个<br>            EditText的类通过findviewbyid这个方法找到就可以使用了。</p>
+<p>###编辑框组件EditText<br>    hint：属性添加文本框提示内容<br>    inputType：设置密码,密码框里面有只能输入数字或者字母。<br>    drawable(+方位如：Left)属性是一张图片,在编辑框的指定位置添加图片<br>    注：drawableleft=drawablestart（最好使用这个）<br>    drawablepadding:用来设置图片和编辑框的距离<br>    lines:用来设置我们的编辑框的行数（输入文字）这个是显示的行数，超过这个行数可以拖动<br>    getText(）:获取我们输入的文本信息<br>        (在Mainactivity里面获取),提前指定一个id，在main里面new 一个<br>            EditText的类通过findviewbyid这个方法找到就可以使用了。</p>
 <p>###图形视图组件imageview:<br>    scaleType：可以用来拉伸我们的图片让他充满，整个界面如：fitxy<br>    以后再补充</p>
 <p>##按钮类组件</p>
-<p>###图片按钮</p>
+<p>###图片按钮imagebutton<br>    完全透明的背景：#0000<br>    添加图片src<br>    改变图片的透明度：image.setimagealpha</p>
+<p>###单选按钮RadioButton<br>    使用其text可以给按钮添加文字<br>    单选按钮只有选中和不选中两种状态，true  false<br>    但是我们使用RadioButton一个一个是不能构成选项的，这些选项之间是无关的。我们通过RadioGroup将我们的多个单选按钮包裹在其中就能实现真正的单选。<br>    例：&lt;RadioGroup<br>            <radiobutton><br>            <radiobutton><br>        </radiobutton></radiobutton></p>
+<p>###复选框checkbox(复选)<br>    直接添加即可。</p>
+<p>###日期选择器DatePicker会出现一个日历</p>
+<p>###时间选择器TimerPicker会出现一个时钟<br>    setIs24HourView(true)，改变默认12小时制为24小时制</p>
+<p>###计时器Chronometer<br>    setBase(）设置起始时间<br>    setFormat(）设置时间格式<br>    start() 指定开始计时<br>    stop(）指定停止计时</p>
+<p>##高级UI组件</p>
+<p>###进度条组件ProgressBar<br>    使用它来提示程序进行的进度,进度条有两种。一种是水平的，还有一种圆形的。默认设置为圆形的。<br>    从官方文档上看，为了适应不同的应用环境，Android内置了几种风格的进度条，可以通过Style属性设置ProgressBar的风格。支持如下属性<br>    @android:style/Widget.ProgressBar.Horizontal：水平进度条（可以显示刻度，常用）。<br>    @android:style/Widget.ProgressBar.Small：小进度条。<br>    @android:style/Widget.ProgressBar.Large：大进度条。<br>    @android:style/Widget.ProgressBar.Inverse：不断跳跃、旋转画面的进度条。<br>    @android:style/Widget.ProgressBar.Large.Inverse:不断跳跃、旋转动画的大进度条。<br>    @android:style/Widget.ProgressBar.Small.Inverse：不断跳跃、旋转动画的小进度条。<br>    只有Widget.ProgressBar.Horizontal风格的进度条，才可以设置进度的递增，其他的风格展示为一个循环的动画，而设置Widget.ProgressBar.Horizontal风格的进度条，需要用到一些属性设置递增的进度，这些属性都有对应的setter、getter方法，这些属性如下：<br>    android:max：设置进度的最大值。<br>    android:progress:设置当前第一进度值。<br>    android:secondaryProgress：设置当前第二进度值。<br>    android:visibility：设置是否显示，默认显示。</p>
+<p>###拖动条组件seekbar间接继承ProgressBar,与进度条类似<br>    因为SeekBar涉及到一个滑块的概念，所以新增了属性android:thumb来通过设置一个Drawable(图像资源)对象，指定自定义滑块的外观，当然如果不设定也可以默认使用Android自带的风格。</p>
+<p>###星级评分控件RatingBar<br>    RatingBar通过星形图标来表示进度。<br>    android:isIndicator:设置是否允许用户修改，true为不允许，<br>    默认为false允许。<br>    android:numStars:设置评分控件一共展示多少个星星，默认5个。<br>    android:rating:设置初始默认星级数。<br>    android:stepSize:设置每次需要修改多少个星级(默认为0.5)通过给stepsize赋值可以修改每次修改多少颗星星</p>
+<p>##图像类组件</p>
+<p>###图像视图(imageview)<br>    1.显示图片 使用前凡在drawable里面，使用时用src属性设置即可<br>    2.对图片设置高宽对图像缩放是等比例缩放的。我们使用scaletype不是等比例缩放的，它可以占满整个imageview，但是图像会被拉伸<br>    scaletype属性里面有很多的用法<br>    设置高宽的： adjustviewbounds指定是否调整自己的边界<br>    (true/false）<br>    高和宽的最大值：maxwidth/maxhigth<br>    着色属性：tint</p>
+<p>##列表类组件</p>
+<p>###下拉列表框<br>    有两种方式来指定列表项。<br>    第一种是通过entries属性，这个需要在value里面创建数组资源。<br>    android:entries=”@array/ctype”获取即可。<br>    第二种在mainactivity里面通过适配器来指定。由于我们指定的是date符合字符串数组，所以我们使用arrayadapter数组类型的适配器。<br>    首先在MainActivity里面声明一个字符串数组，生成我们的内容。<br>    然后声明我们的ArrayAdapter。<br>    ArrayAdapter<string> adapter=new ArrayAdapter<string>(this,android.R.layout.simple_spinner_item,ctype);<br>    第一个参数是一个上下文对象，第二个参数是spinner的样式，我们采用android自带的样式，第三个参数是我们的字符串数组。<br>    最后声明一个Spinner获取布局文件的Spinner，调用setadapter的方法把我们的适配器添加进去。</string></string></p>
+<p>###列表视图listview<br>    一般我们把高度和宽度都设置为与父容器相同。<br>    同样我们指定选项的内容可以通过entries属性，也可以通过适配器。</p>
+<p>###滚动视图ScrollView<br>    第一种方法在布局文件里面创建滚动视图<br>    在滚动视图里面还可以添加一些组件，如常见的文本框组件，当文字一屏显示不下的时候，就可以使用滚动条了。<br>    注：这个默认是竖直方向滚动的。<br>    水平方向滚动horizontalscrollview实现左右水平的滚动<br>    注：一个滚动视图只能放一个组件，当要放置多个组件时，我们必须要使用布局管理器把它们括起来<br>    第二种方法在java文件创建滚动视图，</p>
 
       
     </div>
@@ -545,7 +572,7 @@ Tablelayout类以行和列的形式对控件进行管理，每一行为一个Tab
   <p><span>本文标题:</span><a href="/Android之布局和控件/">Android之布局和控件</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 高槻泉 的个人博客">高槻泉</a></p>
   <p><span>发布时间:</span>2019年06月24日 - 14:06</p>
-  <p><span>最后更新:</span>2019年06月24日 - 14:06</p>
+  <p><span>最后更新:</span>2019年06月27日 - 15:06</p>
   <p><span>原始链接:</span><a href="/Android之布局和控件/" title="Android之布局和控件">www.girlfriendnotfoundexception.com/Android之布局和控件/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="www.girlfriendnotfoundexception.com/Android之布局和控件/" aria-label="复制成功！"></i></span>
   </p>
@@ -642,8 +669,8 @@ Tablelayout类以行和列的形式对控件进行管理，每一行为一个Tab
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hello-world/" rel="next" title="Android">
-                <i class="fa fa-chevron-left"></i> Android
+              <a href="/hello-world/" rel="next" title="Android开始之路">
+                <i class="fa fa-chevron-left"></i> Android开始之路
               </a>
             
           </div>
@@ -651,6 +678,10 @@ Tablelayout类以行和列的形式对控件进行管理，每一行为一个Tab
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Source/" rel="prev" title="Source">
+                Source <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -718,7 +749,7 @@ Tablelayout类以行和列的形式对控件进行管理，每一行为一个Tab
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -830,7 +861,7 @@ Tablelayout类以行和列的形式对控件进行管理，每一行为一个Tab
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">4k</span>
+    <span title="站点总字数">11k</span>
   
 
   
