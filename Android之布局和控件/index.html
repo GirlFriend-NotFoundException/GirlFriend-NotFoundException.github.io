@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="曾是惊鸿照影来">
 <meta property="og:description" content="#布局和控件">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-27T07:31:40.604Z">
+<meta property="og:updated_time" content="2019-07-15T08:45:03.121Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android之布局和控件">
 <meta name="twitter:description" content="#布局和控件">
@@ -448,7 +448,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-27 15:31:40" itemprop="dateModified" datetime="2019-06-27T15:31:40+08:00">2019-06-27</time>
+                <time title="修改时间：2019-07-15 16:45:03" itemprop="dateModified" datetime="2019-07-15T16:45:03+08:00">2019-07-15</time>
               
             
           </span>
@@ -515,7 +515,7 @@
 <a id="more"></a>
 <p>#布局管理器<br>     7种常见的布局管理器<br>   relativelayout（相对布局）<br>   linearlayout（线性布局）<br>   framelayout（帧布局）<br>   tablelayout（表格布局）<br>   absolulayout（绝对布局）<br>   gridlayout（网格布局）<br>   android.support.constraint.ConstraintLayout<br>   各种布局管理器都有各自的好处和不足，最后一种布局是android studio3.0以上的一种新布局方式，过几天研究研究.</p>
 <p>##Relativelayout（相对布局）<br>     相对布局顾名思义它是相对的，有一个参考点的。这个参考点一般来自于父容器和兄弟容器。它的关键在于我们要根据各个组件之间的位置关系控制组件的摆放。<br>     组件布局属性：<br>     android gravity(设置布局管理器各子组件的摆放方式)参数是表示方位的词。<br>    android ignoreGravity（设置某个组件不受前面的属性的影响）<br>    要写上不受影响的id,没有id的话设置一个id<br>    layout_above(上方) lay_toleftof(左边)等等设置组件相对于参考组件的位置<br>    align：对齐<br>    layout_alignParentBottom等等来设置组件和父容器的对齐方式，属性值为Boolean true才行<br>    layout_alignBottom等等设置某一组件和一个组件对齐方式<br>    layout_centerhorizontal组件位于布局管理器水平中间位置<br>    layout_centerinparent中间位置  vertical垂直居中</p>
-<p>##Linearlayout（线性布局）<br>    布局属性：<br>    vertical纵向的叫做垂直线性布局管理器<br>    horizontal横向的叫做水平线性布局管理器<br>    组件布局属性：<br>    gravity：显示组件的位置，可以把表示方向的词组合在一起,<br>    如：gravity=“top|center” 表示顶上居中<br>    layout_weight属性，设置组件所占的权重,默认值为0,组件分配剩余空间</p>
+<p>##Linearlayout（线性布局）<br>    布局属性：<br>    vertical纵向的叫做垂直线性布局管理器<br>    horizontal横向的叫做水平线性布局管理器<br>    组件布局属性：<br>    gravity：显示组件的位置，可以把表示方向的词组合在一起,<br>    如：gravity=“top|center” 表示顶上居中<br>    layout_weight属性，设置组件所占的权重,默认值为0,组件分配剩余空间<br>    diver(分割线)</p>
 <p>##Framelayout（帧布局）<br>    这种布局表示默认在屏幕的左上角层层叠加,用来显示叠加的内容,这些内容还可以拖动<br>    布局属性：<br>    foreground：用于为当前的布局管理器设置一个前景图像(src图像资源)<br>    foregroundGravity设置前景图像的位置<br>    前景图像：始终位于最上层的图像，不能被其他图像盖住</p>
 <p>##Tablelayout（表格布局）<br>    表格布局和后面的网格布局差不多，不过网格布局更好用。<br>    布局属性：<br>    collapseColumns（可以用来隐藏某一列或者几列，填入我们要隐藏的列数字之间用逗号隔开）</p>
 <pre><code>stretchColumns stretch拉伸
@@ -530,7 +530,7 @@ Tablelayout类以行和列的形式对控件进行管理，每一行为一个Tab
 <p>##布局管理器的嵌套<br>    原则1：根布局管理器必须包含xmlns属性<br>    原则2：在一个布局文件中最多只有一个根布局管理器，如果需要有多个还需要使用另外一个布局管理器将他们括起来，而另外一个才是根布局管理器<br>    原则3：不能嵌套太深,影响速度</p>
 <p>#基本UI组件</p>
 <p>##文本类组件</p>
-<p>###文本框组件TextView<br>    颜色 textcolor 字体 textsize 设置单行 singleline<br>    字符串资源  在res的values下明德strings里面 这里可以提前设置好我们需要使用的，通过@string/字符串的名字调用即可<br>    <a href="https://www.cnblogs.com/plokmju/p/Android_UI_TextView.html" target="_blank" rel="noopener">https://www.cnblogs.com/plokmju/p/Android_UI_TextView.html</a><br>    在博客园看到一片文章讲的很好这里直接引用过来。</p>
+<p>###文本框组件TextView<br>    颜色 textcolor 字体 textsize 设置单行 singleline<br>    字符串资源  在res的values下的strings里面 这里可以提前设置好我们需要使用的，通过@string/字符串的名字调用即可<br>    <a href="https://www.cnblogs.com/plokmju/p/Android_UI_TextView.html" target="_blank" rel="noopener">https://www.cnblogs.com/plokmju/p/Android_UI_TextView.html</a><br>    在博客园看到一片文章讲的很好这里直接引用过来。</p>
 <p>###编辑框组件EditText<br>    hint：属性添加文本框提示内容<br>    inputType：设置密码,密码框里面有只能输入数字或者字母。<br>    drawable(+方位如：Left)属性是一张图片,在编辑框的指定位置添加图片<br>    注：drawableleft=drawablestart（最好使用这个）<br>    drawablepadding:用来设置图片和编辑框的距离<br>    lines:用来设置我们的编辑框的行数（输入文字）这个是显示的行数，超过这个行数可以拖动<br>    getText(）:获取我们输入的文本信息<br>        (在Mainactivity里面获取),提前指定一个id，在main里面new 一个<br>            EditText的类通过findviewbyid这个方法找到就可以使用了。</p>
 <p>###图形视图组件imageview:<br>    scaleType：可以用来拉伸我们的图片让他充满，整个界面如：fitxy<br>    以后再补充</p>
 <p>##按钮类组件</p>
@@ -572,7 +572,7 @@ Tablelayout类以行和列的形式对控件进行管理，每一行为一个Tab
   <p><span>本文标题:</span><a href="/Android之布局和控件/">Android之布局和控件</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 高槻泉 的个人博客">高槻泉</a></p>
   <p><span>发布时间:</span>2019年06月24日 - 14:06</p>
-  <p><span>最后更新:</span>2019年06月27日 - 15:06</p>
+  <p><span>最后更新:</span>2019年07月15日 - 16:07</p>
   <p><span>原始链接:</span><a href="/Android之布局和控件/" title="Android之布局和控件">www.girlfriendnotfoundexception.com/Android之布局和控件/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="www.girlfriendnotfoundexception.com/Android之布局和控件/" aria-label="复制成功！"></i></span>
   </p>
@@ -830,7 +830,7 @@ Tablelayout类以行和列的形式对控件进行管理，每一行为一个Tab
         </div>
       </div>
 <div id="music163player">
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29498914&auto=1&height=66"></iframe>
+       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=722935&auto=1&height=66"></iframe>&height=66">
 </div>
       
 
