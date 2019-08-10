@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="www.girlfriendnotfoundexception.com/"/>
-  <updated>2019-07-16T13:58:13.288Z</updated>
+  <updated>2019-07-16T14:00:29.598Z</updated>
   <id>www.girlfriendnotfoundexception.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="www.girlfriendnotfoundexception.com/%E6%95%B0%E6%8D%AE%E5%82%A8%E5%AD%98/"/>
     <id>www.girlfriendnotfoundexception.com/数据储存/</id>
     <published>2019-07-16T12:13:27.000Z</published>
-    <updated>2019-07-16T13:58:13.288Z</updated>
+    <updated>2019-07-16T14:00:29.598Z</updated>
     
     <content type="html"><![CDATA[<p>数据持久化是将那些内存中的瞬时数据保存在储存设备中保证设备在关机状态下这些数据不会丢失。android系统中提供了三种简单实现数据持久化的方式，即文件存储，SharedPrefrences存储，数据库存储。今天先学习比较简单的前两种方式。</p><p>#文件存储</p><p>#SharedPrenfences存储</p><a id="more"></a><p>#文件存储</p><pre><code>这个主要是是使用Java中的流来实现的。通过流的输入输出来将一些简单数据保存在写定的文件中去。主要是使用context中的openFileOutput和openFileInput这两个方法。中间使用一些流的转换。这个openFileOutput方法不像Java中可以自定义存储的路径，所有的文件都是默认存储到data里面的，在文件查看器里面的data文件下按照包名就可以找到。这个方法接受两个参数,第一个是参数文件名字(一定不能写路径,有默认存储的位置的)第二个参数是文件的操作模式，现在主要有两种模式选择MODE_PRIVATE和MODE_APPEND。第一种模式表示指定同样文件名的时候，会覆盖之前的文件内容。第二种模式表示如果有原文件存在就往文件里面追加内容，文件不存在就创建文件。其实文件存储还有两种模式：MODE_WORLD_READABLE 和MODE_WORLD_WRITEABLE.这两种模式允许其它应用程序对我们的程序文件进行读写操作，很危险已被弃用。</code></pre><p>##文件存储之保存</p><pre><code>openFileOutput返回的是一个FileOutputStream对象，我们首先要得到这个对象。FileOutputStream out = null；out = openFileOutput(文件名，存储模式);之后就是流的转换，一般我们使用的缓冲流，和Java差不多。比如说文门在布局文件中添加一个    Edittext 用于输入文本内容，但是我们按下返回键时，这个数据并没有被保存下来。我们需要在这个活动被销毁前将其保存在文件中去。在onDestroy()方法里面调用自定义的保存方法,从Editext获取输入内容，保存在文件里面。</code></pre><p>##文件存储之读取</p><pre><code>读取时使用的方法是openFileInput()这个方法,该方法只有一个参数就是要读取的文件名字。然后系统就会自动去默认保存文件的地方加载这个文件，并且返回一个FileInputStream对象，我们就通过Java流的方式将其读取出来。FileInputStream in = null；in = openFileInput(文件名)；StringBuilder builder = new StringBuilder();我们将获取到的一行一行的数据先行保存在一个StringBuilder里面，最后将读取到的内容返回即可。    </code></pre><p>#SharedPreferences<br>    SharedPreferences是一种使用键值对来保存数据的。在保存一条数据时为其提供一个对应的键，就可以通过这个键来访问这条数据。<br>    SharedPrefrences提供多种不同的数据存储，包括整型，浮点型，布尔型，字符串等等。</p><p>##SharedPreferences之存储数据</p><pre><code>使用SharedPreFerences保存数据时，要首先获得SharedPreFerences对象Android中主要提供了三种方式。一.使用context中的getSharedPreFes()方法    该方法有两个参数，第一个是文件名，第二个是文件存储模式，现在只有一种默认的模式MODE_PRIVATE,这个之前有了解。二.    使用Activity中的getPreferences()方法    这个方法只有以参数，就是存储模式。三. 使用PreferencesMannger的这个类中的getDefaultSharedPreferences    方法，获取一个SharedPreFes对象，参数是一个context上下文对象。一般填入this。获取到SharedPreferences对象后就开始存数据了。一. 首先调用SharedPreferences对象的editor()方法来获取一个SharedPreferences.Editor对象.SharedPreFerences.editor editor = getDefaultSharedPreferences.Editor(&quot;MODE_PRIVATE&quot;).editor二.之后就使用editor来添加数据。如：editor.putString(&quot;键&quot;,&quot;value&quot;)；三.调用editor.apply()或者editor.commit()方法提交即可.</code></pre><p>##SharedPreferences之读取数据</p><pre><code>将数据保存在date以后，我们现在就去读取数据.读取数据是非常简单的直接使用SharedPreferences对象的getSharedPreferences(文件名，存储模式)方法即可。之后调用一系列的get方法就好了。    </code></pre>]]></content>
     
