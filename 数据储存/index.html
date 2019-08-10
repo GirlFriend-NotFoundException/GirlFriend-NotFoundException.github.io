@@ -109,16 +109,18 @@
 
 
 
-  <meta name="description" content="高槻泉的个人站，主要涉及java，android知识共享、实践教程、前沿技术共同学习等方面">
-<meta property="og:type" content="website">
-<meta property="og:title" content="曾是惊鸿照影来">
-<meta property="og:url" content="www.girlfriendnotfoundexception.com/index.html">
+  <meta name="description" content="数据持久化是将那些内存中的瞬时数据保存在储存设备中保证设备在关机状态下这些数据不会丢失。android系统中提供了三种简单实现数据持久化的方式，即文件存储，SharedPrefrences存储，数据库存储。今天先学习比较简单的前两种方式。 #文件存储 #SharedPrenfences存储">
+<meta name="keywords" content="android openFileOutput openFileInput sharedPreferences">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据储存一">
+<meta property="og:url" content="www.girlfriendnotfoundexception.com/数据储存/index.html">
 <meta property="og:site_name" content="曾是惊鸿照影来">
-<meta property="og:description" content="高槻泉的个人站，主要涉及java，android知识共享、实践教程、前沿技术共同学习等方面">
+<meta property="og:description" content="数据持久化是将那些内存中的瞬时数据保存在储存设备中保证设备在关机状态下这些数据不会丢失。android系统中提供了三种简单实现数据持久化的方式，即文件存储，SharedPrefrences存储，数据库存储。今天先学习比较简单的前两种方式。 #文件存储 #SharedPrenfences存储">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-16T13:58:13.288Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="曾是惊鸿照影来">
-<meta name="twitter:description" content="高槻泉的个人站，主要涉及java，android知识共享、实践教程、前沿技术共同学习等方面">
+<meta name="twitter:title" content="数据储存一">
+<meta name="twitter:description" content="数据持久化是将那些内存中的瞬时数据保存在储存设备中保证设备在关机状态下这些数据不会丢失。android系统中提供了三种简单实现数据持久化的方式，即文件存储，SharedPrefrences存储，数据库存储。今天先学习比较简单的前两种方式。 #文件存储 #SharedPrenfences存储">
 
 
 
@@ -128,7 +130,7 @@
 
   
   
-  <link rel="canonical" href="www.girlfriendnotfoundexception.com/">
+  <link rel="canonical" href="www.girlfriendnotfoundexception.com/数据储存/">
 
 
 
@@ -138,7 +140,7 @@
   };
 </script>
 
-  <title>曾是惊鸿照影来</title>
+  <title>数据储存一 | 曾是惊鸿照影来</title>
   
 
 
@@ -186,8 +188,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -229,7 +230,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -371,9 +372,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -405,10 +406,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/数据储存/" class="post-title-link" itemprop="url">数据储存一</a>
+          <h1 class="post-title" itemprop="name headline">数据储存一
+
               
             
           </h1>
@@ -501,443 +500,198 @@
       
 
       
-        
-          <p>数据持久化是将那些内存中的瞬时数据保存在储存设备中保证设备在关机状态下这些数据不会丢失。android系统中提供了三种简单实现数据持久化的方式，即文件存储，SharedPrefrences存储，数据库存储。今天先学习比较简单的前两种方式。</p>
+        <p>数据持久化是将那些内存中的瞬时数据保存在储存设备中保证设备在关机状态下这些数据不会丢失。android系统中提供了三种简单实现数据持久化的方式，即文件存储，SharedPrefrences存储，数据库存储。今天先学习比较简单的前两种方式。</p>
 <p>#文件存储</p>
 <p>#SharedPrenfences存储</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/数据储存/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
+<a id="more"></a>
+<p>#文件存储</p>
+<pre><code>这个主要是是使用Java中的流来实现的。通过流的输入输出来将一些简单数据保存在写定的文件中去。主要是使用context中的openFileOutput和openFileInput这两个方法。中间使用一些流的转换。
+这个openFileOutput方法不像Java中可以自定义存储的路径，所有的文件都是默认存储到data里面的，在文件查看器里面的data文件下按照包名就可以找到。
+这个方法接受两个参数,
+第一个是参数文件名字(一定不能写路径,有默认存储的位置的)
+第二个参数是文件的操作模式，现在主要有两种模式选择MODE_PRIVATE和
+MODE_APPEND。第一种模式表示指定同样文件名的时候，会覆盖之前的文件内容。第二种模式表示如果有原文件存在就往文件里面追加内容，文件不存在就创建文件。其实文件存储还有两种模式：MODE_WORLD_READABLE 和MODE_WORLD_WRITEABLE.这两种模式允许其它应用程序对我们的程序文件进行读写操作，很危险已被弃用。</code></pre><p>##文件存储之保存</p>
+<pre><code>openFileOutput返回的是一个FileOutputStream对象，我们首先要得到这个对象。
+FileOutputStream out = null；
+out = openFileOutput(文件名，存储模式);
+之后就是流的转换，一般我们使用的缓冲流，和Java差不多。
+比如说文门在布局文件中添加一个    Edittext 用于输入文本内容，但是我们按下返回键时，这个数据并没有被保存下来。我们需要在这个活动被销毁前将其保存在文件中去。
+在onDestroy()方法里面调用自定义的保存方法,从Editext获取输入内容，保存在文件里面。</code></pre><p>##文件存储之读取</p>
+<pre><code>读取时使用的方法是openFileInput()这个方法,该方法只有一个参数就是
+要读取的文件名字。然后系统就会自动去默认保存文件的地方加载这个文件，并且返回一个FileInputStream对象，我们就通过Java流的方式将其读取出来。
+FileInputStream in = null；
+in = openFileInput(文件名)；
+StringBuilder builder = new StringBuilder();
+我们将获取到的一行一行的数据先行保存在一个StringBuilder里面，最后将读取到的内容返回即可。    </code></pre><p>#SharedPreferences<br>    SharedPreferences是一种使用键值对来保存数据的。在保存一条数据时为其提供一个对应的键，就可以通过这个键来访问这条数据。<br>    SharedPrefrences提供多种不同的数据存储，包括整型，浮点型，布尔型，字符串等等。</p>
+<p>##SharedPreferences之存储数据</p>
+<pre><code>使用SharedPreFerences保存数据时，要首先获得SharedPreFerences对象
+Android中主要提供了三种方式。
+
+一.使用context中的getSharedPreFes()方法
+    该方法有两个参数，第一个是文件名，第二个是文件存储模式，现在只有一种默认的模式MODE_PRIVATE,这个之前有了解。
+
+二.    使用Activity中的getPreferences()方法
+    这个方法只有以参数，就是存储模式。
+
+三. 使用PreferencesMannger的这个类中的getDefaultSharedPreferences    
+方法，获取一个SharedPreFes对象，参数是一个context上下文对象。一般填入this。
+
+获取到SharedPreferences对象后就开始存数据了。
+
+一. 首先调用SharedPreferences对象的editor()方法来获取一个
+SharedPreferences.Editor对象.
+SharedPreFerences.editor editor = getDefaultSharedPreferences.Editor(&quot;MODE_PRIVATE&quot;).editor
+
+二.之后就使用editor来添加数据。
+如：editor.putString(&quot;键&quot;,&quot;value&quot;)；
+
+三.调用editor.apply()或者editor.commit()方法提交即可.</code></pre><p>##SharedPreferences之读取数据</p>
+<pre><code>将数据保存在date以后，我们现在就去读取数据.
+读取数据是非常简单的直接使用
+SharedPreferences对象的getSharedPreferences(文件名，存储模式)方法即可。
+之后调用一系列的get方法就好了。    </code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/数据储存/">数据储存一</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 高槻泉 的个人博客">高槻泉</a></p>
+  <p><span>发布时间:</span>2019年07月16日 - 20:07</p>
+  <p><span>最后更新:</span>2019年07月16日 - 21:07</p>
+  <p><span>原始链接:</span><a href="/数据储存/" title="数据储存一">www.girlfriendnotfoundexception.com/数据储存/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="www.girlfriendnotfoundexception.com/数据储存/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
         
       
-    </div>
-
+      <div style="display: inline-block">
+        <img src="/坚持原创技术分享，您的支持将鼓励我继续创作！" alt="高槻泉 comment">
+        <p>comment</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/IMG_20190614_233928.jpg" alt="高槻泉 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/IMG_20190614_233853.jpg" alt="高槻泉 支付宝">
+        <p>支付宝</p>
+      </div>
     
 
+  </div>
+</div>
+
+      </div>
     
-    
+
     
 
     <div>
-      
-    </div>
-
-    
-
-    
-      
-    
-    
-
-    
-
+  
     <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
   
 </div>
 
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="www.girlfriendnotfoundexception.com/Broadcast/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="高槻泉">
-      <meta itemprop="description" content="高槻泉的个人站，主要涉及java，android知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avt.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="曾是惊鸿照影来">
-    </span>
-
-    
-      <header class="post-header">
-
         
+          
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/Broadcast/" class="post-title-link" itemprop="url">Broadcast</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-15 14:43:45 / 修改时间：16:40:00" itemprop="dateCreated datePublished" datetime="2019-07-15T14:43:45+08:00">2019-07-15</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/android-openFileOutput-openFileInput-sharedPreferences/" rel="tag"># android openFileOutput openFileInput sharedPreferences</a>
           
-            
-            
-          
-
-          
-          
-            <span id="/Broadcast/" class="leancloud_visitors" data-flag-title="Broadcast">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.8k</span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <p>android BroadCast<br><img src="/images/pg.jpg" alt></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/Broadcast/#more" rel="contents">
-                阅读全文 &raquo;
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Broadcast/" rel="next" title="Broadcast">
+                <i class="fa fa-chevron-left"></i> Broadcast
               </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <div>
-  
-</div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="www.girlfriendnotfoundexception.com/activity和intent/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="高槻泉">
-      <meta itemprop="description" content="高槻泉的个人站，主要涉及java，android知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avt.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="曾是惊鸿照影来">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/activity和intent/" class="post-title-link" itemprop="url">activity和intent</a>
-              
             
-          </h1>
-        
+          </div>
 
-        <div class="post-meta">
-          <span class="post-time">
+          <span class="post-nav-divider"></span>
 
+          <div class="post-nav-prev post-nav-item">
             
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-06-28 15:07:55" itemprop="dateCreated datePublished" datetime="2019-06-28T15:07:55+08:00">2019-06-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-29 10:59:48" itemprop="dateModified" datetime="2019-06-29T10:59:48+08:00">2019-06-29</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-            <span id="/activity和intent/" class="leancloud_visitors" data-flag-title="activity和intent">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">2.3k</span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>#android培训activity和intent</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/activity和intent/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <div>
-  
-</div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -947,599 +701,20 @@
   </article>
 
 
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="www.girlfriendnotfoundexception.com/Source/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="高槻泉">
-      <meta itemprop="description" content="高槻泉的个人站，主要涉及java，android知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avt.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="曾是惊鸿照影来">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/Source/" class="post-title-link" itemprop="url">Source</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-06-27 11:53:57 / 修改时间：15:31:31" itemprop="dateCreated datePublished" datetime="2019-06-27T11:53:57+08:00">2019-06-27</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-            <span id="/Source/" class="leancloud_visitors" data-flag-title="Source">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">2.4k</span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>#安卓资源<br><img src="/images/chatu.jpg" alt></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/Source/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <div>
-  
-</div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="www.girlfriendnotfoundexception.com/Android之布局和控件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="高槻泉">
-      <meta itemprop="description" content="高槻泉的个人站，主要涉及java，android知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avt.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="曾是惊鸿照影来">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/Android之布局和控件/" class="post-title-link" itemprop="url">Android之布局和控件</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-06-24 14:32:33" itemprop="dateCreated datePublished" datetime="2019-06-24T14:32:33+08:00">2019-06-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-15 16:45:03" itemprop="dateModified" datetime="2019-07-15T16:45:03+08:00">2019-07-15</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-            <span id="/Android之布局和控件/" class="leancloud_visitors" data-flag-title="Android之布局和控件">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">5.4k</span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>#布局和控件</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/Android之布局和控件/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <div>
-  
-</div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="www.girlfriendnotfoundexception.com/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="高槻泉">
-      <meta itemprop="description" content="高槻泉的个人站，主要涉及java，android知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avt.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="曾是惊鸿照影来">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/hello-world/" class="post-title-link" itemprop="url">Android开始之路</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-06-17 15:00:14" itemprop="dateCreated datePublished" datetime="2019-06-17T15:00:14+08:00">2019-06-17</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-27 15:31:36" itemprop="dateModified" datetime="2019-06-27T15:31:36+08:00">2019-06-27</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-            <span id="/hello-world/" class="leancloud_visitors" data-flag-title="Android开始之路">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.1k</span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>#准备工作<br><img src="/images/xmbd.jpg" alt></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/hello-world/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <div>
-  
-</div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDc2OS8yMTI5MA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -1817,6 +992,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
 
   
 
@@ -1832,6 +1011,23 @@
 
   
 
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '数据储存/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
 
 
   
@@ -2163,38 +1359,37 @@
   
   <script>
     
-    function showTime(Counter) {
-      var entries = [];
+    function addCount(Counter) {
       var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
 
-      $visitors.each(function() {
-        entries.push( $(this).attr('id').trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
         .done(function({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for (var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if (countSpan.text() == '') {
-              countSpan.text(0);
-            }
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
           }
         })
         .fail(function ({ responseJSON }) {
@@ -2219,9 +1414,7 @@
             });
           };
           
-            if ($('.post-title-link').length >= 1) {
-              showTime(Counter);
-            }
+            addCount(Counter);
           
         });
     });
